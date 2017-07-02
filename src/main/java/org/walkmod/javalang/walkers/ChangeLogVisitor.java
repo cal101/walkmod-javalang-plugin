@@ -1961,8 +1961,9 @@ public class ChangeLogVisitor extends VoidVisitorAdapter<VisitorContext> {
             setIsUpdated(false);
             Position pos = position.pop();
 
-            position.push(new Position(n.getBeginLine(), n.getBeginColumn()));
+            position.push(new Position(aux.getBeginLine(), aux.getBeginColumn()));
             inferASTChanges(n.getScope(), aux.getScope());
+            final boolean createdScope = aux.getScope() != null && n.getScope() == null;
             inferASTChanges(n.getTypeArgs(), aux.getTypeArgs());
             List<Expression> theseArgs = n.getArgs();
             List<Expression> otherArgs = aux.getArgs();
@@ -1970,7 +1971,7 @@ public class ChangeLogVisitor extends VoidVisitorAdapter<VisitorContext> {
 
             position.pop();
             position.push(pos);
-            if (!equals) {
+            if (!equals || createdScope) {
                 applyUpdate(n, (Node) o);
             }
             if (!isUpdated()) {
