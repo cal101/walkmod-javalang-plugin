@@ -51,7 +51,28 @@
 					</execution>
 				</executions>
 			</plugin>
-		</plugins>
+			<plugin>
+				<!-- The gmavenplus plugin is used to compile Groovy code. To learn more about this plugin,
+                visit https://github.com/groovy/GMavenPlus/wiki -->
+				<groupId>org.codehaus.gmavenplus</groupId>
+				<artifactId>gmavenplus-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>addSources</goal>
+							<goal>addTestSources</goal>
+							<goal>generateStubs</goal>
+							<goal>compile</goal>
+							<goal>testGenerateStubs</goal>
+							<goal>testCompile</goal>
+							<goal>removeStubs</goal>
+							<goal>removeTestStubs</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+	</plugins>
 	</build>
 	<dependencies>
 		<dependency>
@@ -79,6 +100,25 @@
 			<groupId>org.walkmod</groupId>
 			<artifactId>walkmod-core</artifactId>
 			<version>[3.0.0,4.0.0)</version>
+		</dependency>
+		<!-- write unit tests in groovy -->
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>2.4.7</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+		<dependency>
+		    <groupId>org.assertj</groupId>
+		    <artifactId>assertj-core</artifactId>
+		    <version>2.8.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>20.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
