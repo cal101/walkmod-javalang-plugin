@@ -1966,7 +1966,7 @@ public class ChangeLogVisitor extends VoidVisitorAdapter<VisitorContext> {
             Position pos = popPosition();
 
 //            position.push(new Position(n.getBeginLine(), n.getBeginColumn()));
-            position.push(new Position(aux.getBeginLine(), aux.getBeginColumn()));
+            pushPosition(aux);
             inferASTChanges(n.getScope(), aux.getScope());
             inferASTChanges(n.getTypeArgs(), aux.getTypeArgs());
             List<Expression> theseArgs = n.getArgs();
