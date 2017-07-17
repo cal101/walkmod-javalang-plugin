@@ -166,7 +166,7 @@ public class TestActionsInferred {
       ReplaceAction action = (ReplaceAction) actions.get(0);
       Assert.assertEquals("LOG.warn(foo())", action.getNewText());
 
-      // when pushing "n.pos" instead of "aux.pos" in ChangeLogVisitor the error is having 2 actions and:
+      // when pushing "n.pos" instead of "aux.pos" in ChangeLogVisitor the error is having 2 actions and that results in:
       //  Expected :public class A { public void foo() { LOG.warn(foo()); }}
       //  Actual   :LOGpublic class A { public void foo() { LOG.warn(foo()); }}
       assertCode(actions, code, "public class A { public void foo() { LOG.warn(foo()); }}");
